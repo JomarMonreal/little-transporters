@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://daalv5hm5lk4t"]
+
+[ext_resource type="Script" uid="uid://dn03x263c2lel" path="res://character_body_2d.gd" id="1_4k2mb"]
+[ext_resource type="Texture2D" uid="uid://dudphnf78l6lx" path="res://icon.svg" id="2_3cpk4"]
+[ext_resource type="Script" uid="uid://cp1rq4ab304hn" path="res://components/player_side_scroller_movement.gd" id="2_tkc8e"]
+[ext_resource type="Script" uid="uid://bw0q5qcaic0y4" path="res://objects/transporter/transporter_state_manager.gd" id="3_3cpk4"]
+[ext_resource type="Script" uid="uid://dhtoqh04fbw3u" path="res://objects/transporter/transporter_idle.gd" id="4_v6pi3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_02mon"]
+radius = 58.0
+height = 124.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=2118748822]
+script = ExtResource("1_4k2mb")
+
+[node name="PlayerMovement" type="Node2D" parent="." unique_id=1932189029]
+script = ExtResource("2_tkc8e")
+speed = 500.0
+jump_velocity = -1000.0
+gravity_factor = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1092141321]
+texture = ExtResource("2_3cpk4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=993065318]
+shape = SubResource("CapsuleShape2D_02mon")
+
+[node name="StateManager" type="Node2D" parent="." unique_id=1641965080]
+script = ExtResource("3_3cpk4")
+
+[node name="Idle" type="Node2D" parent="StateManager" unique_id=978645480]
+script = ExtResource("4_v6pi3")
+
+[node name="Walking" type="Node2D" parent="StateManager" unique_id=1196406927]
+
+[node name="Jumping" type="Node2D" parent="StateManager" unique_id=1468999738]
+
+[node name="Dead" type="Node2D" parent="StateManager" unique_id=1820278996]
