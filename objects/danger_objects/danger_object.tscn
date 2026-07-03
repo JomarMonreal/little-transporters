@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bwxo47e1jtufk"]
+
+[ext_resource type="Script" uid="uid://bm40auyimo87r" path="res://objects/danger_objects/danger_object.gd" id="1_4cknt"]
+[ext_resource type="Texture2D" uid="uid://dudphnf78l6lx" path="res://icon.svg" id="1_dsya6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xo4yh"]
+size = Vector2(63, 63)
+
+[node name="DangerObject" type="StaticBody2D" unique_id=1126253624]
+script = ExtResource("1_4cknt")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1152239100]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_dsya6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=78459497]
+position = Vector2(-0.5, -1.5)
+shape = SubResource("RectangleShape2D_xo4yh")

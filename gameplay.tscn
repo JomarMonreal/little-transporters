@@ -3,17 +3,19 @@
 [ext_resource type="PackedScene" uid="uid://daalv5hm5lk4t" path="res://objects/transporter/transporter.tscn" id="1_ej4tk"]
 [ext_resource type="Texture2D" uid="uid://dudphnf78l6lx" path="res://icon.svg" id="1_n4psk"]
 [ext_resource type="Script" uid="uid://pk0yhp1phpl4" path="res://components/camera_script.gd" id="1_oe8ih"]
+[ext_resource type="PackedScene" uid="uid://bwxo47e1jtufk" path="res://objects/danger_objects/danger_object.tscn" id="3_xuee5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_02mon"]
 size = Vector2(1050, 202)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xo4yh"]
+size = Vector2(63, 63)
 
 [node name="Gameplay" type="Node2D" unique_id=886058013]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1625672426 node_paths=PackedStringArray("target")]
 script = ExtResource("1_oe8ih")
 target = NodePath("../CharacterBody2D")
-
-[node name="CharacterBody2D" parent="." unique_id=2118748822 instance=ExtResource("1_ej4tk")]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1472534199]
 position = Vector2(407, 659)
@@ -25,12 +27,18 @@ shape = SubResource("RectangleShape2D_02mon")
 scale = Vector2(8.171875, 1.609375)
 texture = ExtResource("1_n4psk")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=1601833663]
-position = Vector2(1184, 452)
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=1418302773]
+position = Vector2(670, 524)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=513415296]
-shape = SubResource("RectangleShape2D_02mon")
-
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2" unique_id=1179829961]
-scale = Vector2(8.171875, 1.609375)
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2" unique_id=1827494649]
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_n4psk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=1262609702]
+position = Vector2(-0.5, -1.5)
+shape = SubResource("RectangleShape2D_xo4yh")
+
+[node name="DangerObject" parent="." unique_id=498107209 instance=ExtResource("3_xuee5")]
+position = Vector2(497, 525)
+
+[node name="CharacterBody2D" parent="." unique_id=2118748822 instance=ExtResource("1_ej4tk")]

@@ -3,6 +3,7 @@ class_name PlayerSideScrollerMovement
 
 @export var speed = 300.0
 @export var jump_velocity = -400.0
+@export var jump_cut_multiplier = 0.5
 @export var gravity_factor = 2
 
 # Called when the node enters the scene tree for the first time.
@@ -11,13 +12,18 @@ func move(player: CharacterBody2D, delta: float):
 	if not player.is_on_floor():
 		player.velocity += player.get_gravity() * gravity_factor * delta
 
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and player.is_on_floor():
+	if Input.is_action_just_pressed("jump") and player.is_on_floor():
 		player.velocity.y = jump_velocity
+	elif Input.is_action_just_released("jump") and player.velocity.y < 0:
+		player.velocity.y *= jump_cut_multiplier
 
 	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("ui_left", "ui_right")
+	var direction := 0.0
+	if Input.is_action_pressed("ui_left") or Input.is_physical_key_pressed(KEY_A):
+		direction -= 1.0
+	if Input.is_action_pressed("ui_right") or Input.is_physical_key_pressed(KEY_D):
+		direction += 1.0
+
 	if direction:
 		player.velocity.x = direction * speed
 	else:
