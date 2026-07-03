@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://dhtoqh04fbw3u" path="res://objects/transporter/transporter_idle.gd" id="4_v6pi3"]
 [ext_resource type="Script" uid="uid://drblg2iwu2j6l" path="res://objects/transporter/transporter_walking.gd" id="6_u8nj3"]
 [ext_resource type="Script" uid="uid://5oiux7eub8yu" path="res://objects/transporter/transporter_jumping.gd" id="7_xo4yh"]
+[ext_resource type="Script" uid="uid://be1gyk6si4jgx" path="res://objects/transporter/transporter_hurt.gd" id="8_a6nkc"]
 [ext_resource type="Script" uid="uid://dbp4eytjr3huo" path="res://objects/transporter/transporter_dead.gd" id="8_cxmdo"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_02mon"]
@@ -18,7 +19,6 @@ script = ExtResource("1_4k2mb")
 
 [node name="PlayerMovement" type="Node2D" parent="." unique_id=1932189029]
 script = ExtResource("2_tkc8e")
-speed = 500.0
 jump_velocity = -850.0
 gravity_factor = 4
 
@@ -40,6 +40,9 @@ script = ExtResource("6_u8nj3")
 
 [node name="Jumping" type="Node2D" parent="StateManager" unique_id=1468999738]
 script = ExtResource("7_xo4yh")
+
+[node name="Hurt" type="Node2D" parent="StateManager" unique_id=1102785628]
+script = ExtResource("8_a6nkc")
 
 [node name="Dead" type="Node2D" parent="StateManager" unique_id=1820278996]
 script = ExtResource("8_cxmdo")

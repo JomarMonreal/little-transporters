@@ -1,9 +1,12 @@
 [gd_scene format=3 uid="uid://ceng7lc87flnb"]
 
 [ext_resource type="PackedScene" uid="uid://daalv5hm5lk4t" path="res://objects/transporter/transporter.tscn" id="1_ej4tk"]
+[ext_resource type="Script" uid="uid://b7lsqausikovv" path="res://objects/gameplay/gameplay.gd" id="1_fbudy"]
 [ext_resource type="Texture2D" uid="uid://dudphnf78l6lx" path="res://icon.svg" id="1_n4psk"]
 [ext_resource type="Script" uid="uid://pk0yhp1phpl4" path="res://components/camera_script.gd" id="1_oe8ih"]
 [ext_resource type="PackedScene" uid="uid://bwxo47e1jtufk" path="res://objects/danger_objects/danger_object.tscn" id="3_xuee5"]
+[ext_resource type="Script" uid="uid://28pilwxce5ve" path="res://objects/gameplay/gameplay_state_machine.gd" id="5_cbffv"]
+[ext_resource type="Script" uid="uid://ck4153bst8ypb" path="res://objects/gameplay/gameplay_playing.gd" id="6_fbudy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_02mon"]
 size = Vector2(1050, 202)
@@ -12,10 +15,12 @@ size = Vector2(1050, 202)
 size = Vector2(63, 63)
 
 [node name="Gameplay" type="Node2D" unique_id=886058013]
+script = ExtResource("1_fbudy")
+transporter_scene = ExtResource("1_ej4tk")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1625672426 node_paths=PackedStringArray("target")]
 script = ExtResource("1_oe8ih")
-target = NodePath("../CharacterBody2D")
+target = NodePath("../Transporters/CharacterBody2D")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1472534199]
 position = Vector2(407, 659)
@@ -41,4 +46,12 @@ shape = SubResource("RectangleShape2D_xo4yh")
 [node name="DangerObject" parent="." unique_id=498107209 instance=ExtResource("3_xuee5")]
 position = Vector2(497, 525)
 
-[node name="CharacterBody2D" parent="." unique_id=2118748822 instance=ExtResource("1_ej4tk")]
+[node name="Transporters" type="Node2D" parent="." unique_id=1995988916]
+
+[node name="CharacterBody2D" parent="Transporters" unique_id=2118748822 instance=ExtResource("1_ej4tk")]
+
+[node name="StateManager" type="Node2D" parent="." unique_id=70252168]
+script = ExtResource("5_cbffv")
+
+[node name="Playing" type="Node2D" parent="StateManager" unique_id=629519442]
+script = ExtResource("6_fbudy")

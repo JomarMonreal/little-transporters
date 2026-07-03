@@ -6,6 +6,11 @@ class_name PlayerSideScrollerMovement
 @export var jump_cut_multiplier = 0.5
 @export var gravity_factor = 2
 
+func gravitate(player: CharacterBody2D, delta: float) -> void:
+	if not player.is_on_floor():
+		player.velocity += player.get_gravity() * gravity_factor * delta
+	player.move_and_slide()
+
 # Called when the node enters the scene tree for the first time.
 func move(player: CharacterBody2D, delta: float):
 	# Add the gravity.

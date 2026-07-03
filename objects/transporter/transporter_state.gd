@@ -6,5 +6,6 @@ enum State {
 	Idle,
 	Walking,
 	Jumping,
+	Hurt,
 	Dead
 }
