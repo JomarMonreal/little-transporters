@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://ck4153bst8ypb" path="res://objects/gameplay/gameplay_playing.gd" id="6_fbudy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_02mon"]
-size = Vector2(1050, 202)
+size = Vector2(2002, 202)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xo4yh"]
 size = Vector2(63, 63)
@@ -24,16 +24,22 @@ target = NodePath("../Transporters/CharacterBody2D")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1472534199]
 position = Vector2(407, 659)
+collision_layer = 255
+collision_mask = 255
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1930691067]
+position = Vector2(-476, 0)
 shape = SubResource("RectangleShape2D_02mon")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=1290693451]
-scale = Vector2(8.171875, 1.609375)
+position = Vector2(-474.99997, 0)
+scale = Vector2(15.593749, 1.609375)
 texture = ExtResource("1_n4psk")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=1418302773]
 position = Vector2(670, 524)
+collision_layer = 255
+collision_mask = 255
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2" unique_id=1827494649]
 scale = Vector2(0.5, 0.5)
@@ -45,8 +51,10 @@ shape = SubResource("RectangleShape2D_xo4yh")
 
 [node name="DangerObject" parent="." unique_id=498107209 instance=ExtResource("3_xuee5")]
 position = Vector2(497, 525)
+collision_layer = 255
+collision_mask = 255
 
-[node name="Transporters" type="Node2D" parent="." unique_id=1995988916]
+[node name="Transporters" type="Node2D" parent="." unique_id=1995988916 groups=["transporter_group"]]
 
 [node name="CharacterBody2D" parent="Transporters" unique_id=2118748822 instance=ExtResource("1_ej4tk")]
 

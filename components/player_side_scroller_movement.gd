@@ -12,7 +12,7 @@ func gravitate(player: CharacterBody2D, delta: float) -> void:
 	player.move_and_slide()
 
 # Called when the node enters the scene tree for the first time.
-func move(player: CharacterBody2D, delta: float):
+func move(player: CharacterBody2D, delta: float, speed_multiplier: float = 1.0):
 	# Add the gravity.
 	if not player.is_on_floor():
 		player.velocity += player.get_gravity() * gravity_factor * delta
@@ -30,8 +30,8 @@ func move(player: CharacterBody2D, delta: float):
 		direction += 1.0
 
 	if direction:
-		player.velocity.x = direction * speed
+		player.velocity.x = direction * speed * speed_multiplier
 	else:
-		player.velocity.x = move_toward(player.velocity.x, 0, speed)
+		player.velocity.x = move_toward(player.velocity.x, 0, speed * speed_multiplier)
 
 	player.move_and_slide()

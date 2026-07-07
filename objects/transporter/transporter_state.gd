@@ -5,6 +5,8 @@ enum State {
 	Null,
 	Idle,
 	Walking,
+	Carrying,
+	Throwing,
 	Jumping,
 	Hurt,
 	Dead

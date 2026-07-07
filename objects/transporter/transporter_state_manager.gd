@@ -7,6 +7,8 @@ func _ready() -> void:
 		TransporterState.State.Walking: $Walking,
 		TransporterState.State.Jumping: $Jumping,
 		TransporterState.State.Hurt: $Hurt,
+		TransporterState.State.Carrying: $Carrying,
+		TransporterState.State.Throwing: $Throwing,
 		TransporterState.State.Dead: $Dead,
 	}
 
