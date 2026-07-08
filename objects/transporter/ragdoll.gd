@@ -5,26 +5,14 @@ class_name TransportRagdoll
 
 var limbs: Array[RigidBody2D] = []
 
-func _ready() -> void:
+func detach_limbs() -> void:
 	for child in get_children():
 		if child is RigidBody2D:
 			limbs.append(child)
-
-	mass = ragdoll_mass
-	for limb in limbs:
-		limb.mass = ragdoll_mass
-
 	for limb in limbs:
 		limb.reparent(get_parent())
 		limb.z_index = z_index - 1
 		limb.modulate = limb.modulate.darkened(0.2)
-
-
-func set_carrying(carrying: bool) -> void:
-	var new_gravity_scale := 0.0 if carrying else 1.0
-	gravity_scale = new_gravity_scale
-	for limb in limbs:
-		limb.gravity_scale = new_gravity_scale
 
 
 func set_static(is_static: bool) -> void:

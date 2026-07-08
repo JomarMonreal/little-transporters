@@ -25,16 +25,14 @@ func get_hurt() -> void:
 	# Check if a collision occurred during this frame
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
-		var collider = collision.get_collider()
+		var collider_layer = PhysicsServer2D.body_get_collision_layer(collision.get_collider_rid())
 
-		# Example check
-		if collider is DangerObject:
+		if collider_layer & (1 << 8):
 			knockback_direction = collision.get_normal()
 			states.change_state(TransporterState.State.Hurt)
 			
 
 func _attach_ragdoll_to_resting_position() -> void:
-	ragdoll_to_carry.set_carrying(false)
 	ragdoll_to_carry.set_static(true)
 	ragdoll_to_carry.reparent(carry_resting_target)
 	ragdoll_to_carry.position = Vector2.ZERO

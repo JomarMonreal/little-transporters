@@ -7,8 +7,8 @@ func enter() -> void:
 	transporter.possible_ragdoll = null
 	transporter.ragdoll_to_carry.ignore_collisions_with(transporter)
 
-	transporter.ragdoll_to_carry.set_carrying(true)
 	transporter.carry_timer.start()
+	transporter.velocity = Vector2.ZERO
 
 
 func physics_process(delta: float) -> int:
