@@ -6,14 +6,21 @@ func enter() -> void:
 	transporter.collider.visible = false
 	transporter.dead.emit()
 	transporter.sprite_group.queue_free()
-	var instance = transporter.ragdoll.instantiate() as Node2D
-	get_tree().get_first_node_in_group("transporter_group").add_child(instance)
-	instance.global_position = transporter.global_position
-	instance.detach_limbs()
+
+	if not transporter.no_ragdoll_on_death:
+		var instance = transporter.ragdoll.instantiate() as Node2D
+		get_tree().get_first_node_in_group("transporter_group").add_child(instance)
+		instance.global_position = transporter.global_position
+		instance.detach_limbs()
+
 	var ragdoll := transporter.ragdoll_to_carry
 	if ragdoll != null:
-		ragdoll.reparent(transporter.get_parent())
-		ragdoll.set_static(false)
+		if transporter.no_ragdoll_on_death:
+			ragdoll.queue_free()
+		else:
+			ragdoll.reparent(transporter.get_parent())
+			ragdoll.set_static(false)
+
 	transporter.queue_free()
 
 func physics_process(delta: float) -> int:

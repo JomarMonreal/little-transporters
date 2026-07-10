@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://dqxy38cr64svf"]
+
+[ext_resource type="Texture2D" uid="uid://dxha5debhrpv8" path="res://assets/sprites/objects/desk_assets.png" id="1_um7kw"]
+
+[node name="Node2D" type="RigidBody2D" unique_id=77559892]
+center_of_mass_mode = 1
+center_of_mass = Vector2(-1000, 0)
+
+[node name="DeskAssets" type="Sprite2D" parent="." unique_id=714427651]
+position = Vector2(1168, 0)
+texture = ExtResource("1_um7kw")
+region_enabled = true
+region_rect = Rect2(896, 0, 128, 128)
+
+[node name="DeskAssets3" type="Sprite2D" parent="." unique_id=1306426059]
+position = Vector2(-436, 1)
+texture = ExtResource("1_um7kw")
+region_enabled = true
+region_rect = Rect2(0, 0, 128, 128)
+
+[node name="DeskAssets2" type="Sprite2D" parent="." unique_id=357127337]
+texture = ExtResource("1_um7kw")
+region_enabled = true
+region_rect = Rect2(128, 0, 760, 128)
+
+[node name="DeskAssets4" type="Sprite2D" parent="." unique_id=1139908937]
+position = Vector2(733, 0)
+texture = ExtResource("1_um7kw")
+region_enabled = true
+region_rect = Rect2(144, 0, 744, 128)
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="." unique_id=1058747858]
+position = Vector2(364.5, 3.5)
+polygon = PackedVector2Array(-757.5, -43.5, -829.5, 5.5, -833.5, 38.5, 832.5, 48.5, 830.5, 9.5, 766.5, -41.5)

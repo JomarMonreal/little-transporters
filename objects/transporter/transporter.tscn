@@ -993,8 +993,16 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_02mon"]
-radius = 30.0
-height = 94.0
+radius = 28.0
+height = 92.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v5oca"]
+radius = 6.0
+height = 64.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yt206"]
+radius = 6.0
+height = 56.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=2118748822]
 script = ExtResource("1_4k2mb")
@@ -1004,6 +1012,10 @@ ragdoll = ExtResource("2_dktfd")
 script = ExtResource("2_tkc8e")
 jump_velocity = -1200.0
 gravity_factor = 4
+
+[node name="JumpBufferTimer" type="Timer" parent="PlayerMovement" unique_id=924157630]
+
+[node name="CoyeteJumpTimer" type="Timer" parent="PlayerMovement" unique_id=1709967820]
 
 [node name="StateManager" type="Node2D" parent="." unique_id=1641965080]
 script = ExtResource("3_3cpk4")
@@ -1046,6 +1058,9 @@ position = Vector2(59, -2)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprites/CarryArea" unique_id=621605998]
 position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_02mon")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprites/CarryArea" unique_id=162030044]
+polygon = PackedVector2Array(-10, -17, -28, -34, -61, -36, -60, -51, -17, -51, 9, -15, 9, 53, -14, 53)
 
 [node name="Hand2" type="Sprite2D" parent="Sprites" unique_id=1416697843]
 material = SubResource("ShaderMaterial_7shq4")
@@ -1095,11 +1110,34 @@ root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_7shq4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=993065318]
+position = Vector2(0, 5)
 shape = SubResource("CapsuleShape2D_02mon")
 
 [node name="CarryTimer" type="Timer" parent="." unique_id=1554305546]
 wait_time = 0.7
 one_shot = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2051828730]
+visible = false
+position = Vector2(-39, 0)
+collision_layer = 255
+collision_mask = 255
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1229370270]
+visible = false
+position = Vector2(18, 14)
+shape = SubResource("CapsuleShape2D_v5oca")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=1510367787]
+visible = false
+position = Vector2(38, -29)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_yt206")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=3408031]
+visible = false
+position = Vector2(61, 13)
+shape = SubResource("CapsuleShape2D_v5oca")
 
 [connection signal="body_entered" from="Sprites/CarryArea" to="." method="_on_carry_area_body_entered"]
 [connection signal="body_exited" from="Sprites/CarryArea" to="." method="_on_carry_area_body_exited"]

@@ -8,12 +8,14 @@ class_name Transporter
 @onready var collider: Node2D = $CollisionShape2D
 @onready var carry_resting_target: Node2D = $Sprites/CarryRestingPosition
 @onready var carry_timer: Timer =  $CarryTimer
+@onready var physics_bodies: StaticBody2D = $StaticBody2D
 
 @export var ragdoll: PackedScene
 
 var knockback_direction: Vector2 = Vector2.ZERO
 var possible_ragdoll: TransportRagdoll
 var ragdoll_to_carry: TransportRagdoll
+var no_ragdoll_on_death := false
 
 
 signal dead
@@ -25,6 +27,12 @@ func get_hurt() -> void:
 	# Check if a collision occurred during this frame
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
+
+		if collision.get_collider() is DangerBoundary:
+			no_ragdoll_on_death = true
+			states.change_state(TransporterState.State.Dead)
+			return
+
 		var collider_layer = PhysicsServer2D.body_get_collision_layer(collision.get_collider_rid())
 
 		if collider_layer & (1 << 8):
@@ -41,6 +49,7 @@ func _attach_ragdoll_to_resting_position() -> void:
 
 func _ready() -> void:
 	states.init(self)
+	add_collision_exception_with(physics_bodies)
 
 func _process(delta: float) -> void:
 	states.process(delta)
