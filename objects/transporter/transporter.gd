@@ -49,6 +49,11 @@ func _physics_process(delta: float) -> void:
 	states.physics_process(delta)
 	get_hurt()
 
+	if Input.is_action_pressed("ui_left") or Input.is_physical_key_pressed(KEY_A):
+		sprite_group.scale.x = -1
+	if Input.is_action_pressed("ui_right") or Input.is_physical_key_pressed(KEY_D):
+		sprite_group.scale.x = 1
+
 
 func _on_carry_area_body_entered(body: Node2D) -> void:
 	if body is not TransportRagdoll:

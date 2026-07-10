@@ -1016,7 +1016,7 @@ script = ExtResource("6_ykppn")
 
 [node name="Throwing" type="Node2D" parent="StateManager" unique_id=1874923409]
 script = ExtResource("7_18w21")
-throw_force = Vector2(600, -100)
+throw_force = Vector2(900, -100)
 
 [node name="Walking" type="Node2D" parent="StateManager" unique_id=1196406927]
 script = ExtResource("6_u8nj3")

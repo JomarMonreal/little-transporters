@@ -28,11 +28,6 @@ func physics_process(delta: float) -> int:
 		elif transporter.ragdoll_to_carry != null:
 			return TransporterState.State.Throwing
 		
-
-	if transporter.velocity.x < 0:
-		transporter.sprite_group.scale.x = -1
-	elif transporter.velocity.x > 0:
-		transporter.sprite_group.scale.x = 1
 	if transporter.velocity.x == 0:
 		return TransporterState.State.Idle
 		

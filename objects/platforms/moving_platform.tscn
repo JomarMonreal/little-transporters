@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://b8jdvyk5carad"]
+
+[ext_resource type="Script" uid="uid://fhk13bj0hk8x" path="res://objects/platforms/moving_platform.gd" id="1_4v6aw"]
+[ext_resource type="Texture2D" uid="uid://de4tr6knguku7" path="res://assets/sprites/fly/frame0000.png" id="1_nw4yb"]
+[ext_resource type="Texture2D" uid="uid://clvsb3yhlwss" path="res://assets/sprites/fly/frame0001.png" id="2_4v6aw"]
+[ext_resource type="Texture2D" uid="uid://8mu2aas0bxha" path="res://assets/sprites/fly/frame0002.png" id="3_cpdi0"]
+
+[sub_resource type="Curve2D" id="Curve2D_nw4yb"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, -2, 0, 0, 0, 0, 619, 2)
+}
+point_count = 3
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_02mon"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_nw4yb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_4v6aw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_cpdi0")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="Animation" id="Animation_4v6aw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_cpdi0"]
+resource_name = "default"
+length = 3.0000000000000004
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(-1.56, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cdgap"]
+_data = {
+&"RESET": SubResource("Animation_4v6aw"),
+&"default": SubResource("Animation_cpdi0")
+}
+
+[node name="MovingPlatform" type="Path2D" unique_id=202415905]
+curve = SubResource("Curve2D_nw4yb")
+script = ExtResource("1_4v6aw")
+facing_right = false
+
+[node name="PathFollow2D" type="PathFollow2D" parent="." unique_id=313661573]
+rotation = -0.4636476
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathFollow2D" unique_id=666110417]
+remote_path = NodePath("../../AnimatableBody2D")
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="." unique_id=1294312149]
+rotation = -0.4636476
+scale = Vector2(0.99999994, 0.99999994)
+collision_layer = 255
+collision_mask = 255
+
+[node name="Sprite" type="AnimatedSprite2D" parent="AnimatableBody2D" unique_id=2019670334]
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_02mon")
+autoplay = "default"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AnimatableBody2D" unique_id=743255350]
+polygon = PackedVector2Array(53, -8, 65, -14, 84, -12, 95, 9, 92, 37, 82, 50, 45, 39, -2, 41, -41, 53, -92, 43, -79, 11, -59, -8, 8, -15)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=258863389]
+libraries/ = SubResource("AnimationLibrary_cdgap")
+autoplay = &"default"
