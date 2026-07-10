@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://fhk13bj0hk8x" path="res://objects/platforms/moving_platform.gd" id="1_4v6aw"]
 [ext_resource type="Texture2D" uid="uid://de4tr6knguku7" path="res://assets/sprites/fly/frame0000.png" id="1_nw4yb"]
 [ext_resource type="Texture2D" uid="uid://clvsb3yhlwss" path="res://assets/sprites/fly/frame0001.png" id="2_4v6aw"]
+[ext_resource type="Shader" uid="uid://dnspan8l0c004" path="res://shaders/contrast.gdshader" id="2_cpdi0"]
 [ext_resource type="Texture2D" uid="uid://8mu2aas0bxha" path="res://assets/sprites/fly/frame0002.png" id="3_cpdi0"]
 
 [sub_resource type="Curve2D" id="Curve2D_nw4yb"]
@@ -10,6 +11,12 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, -2, 0, 0, 0, 0, 619, 2)
 }
 point_count = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cdgap"]
+shader = ExtResource("2_cpdi0")
+shader_parameter/brightness = 1.0
+shader_parameter/contrast = 1.2650000600875
+shader_parameter/saturation = 1.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_02mon"]
 animations = [{
@@ -84,6 +91,7 @@ collision_layer = 255
 collision_mask = 255
 
 [node name="Sprite" type="AnimatedSprite2D" parent="AnimatableBody2D" unique_id=2019670334]
+material = SubResource("ShaderMaterial_cdgap")
 scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_02mon")
 autoplay = "default"

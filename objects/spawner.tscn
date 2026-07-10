@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://u02nugk8npsf"]
+
+[ext_resource type="Script" uid="uid://b16eunl858sqq" path="res://objects/spawner.gd" id="1_uk7qp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_02mon"]
+size = Vector2(47, 74)
+
+[node name="Spawner" type="Area2D" unique_id=143273831]
+script = ExtResource("1_uk7qp")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=192318200]
+position = Vector2(1, -1)
+shape = SubResource("RectangleShape2D_02mon")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

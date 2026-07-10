@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://4sg6ox8vmplj" path="res://assets/sprites/transporters/hand.png" id="1_l4woh"]
 [ext_resource type="Texture2D" uid="uid://bnn24jha118hl" path="res://assets/sprites/transporters/foot.png" id="2_ki54n"]
 [ext_resource type="Texture2D" uid="uid://dr5jylloirxke" path="res://assets/sprites/transporters/body.png" id="3_4wxc6"]
+[ext_resource type="Shader" uid="uid://dnspan8l0c004" path="res://shaders/contrast.gdshader" id="4_4wxc6"]
 [ext_resource type="Texture2D" uid="uid://dlg8evg8cb4ff" path="res://assets/sprites/transporters/head.png" id="4_ymfra"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v5oca"]
@@ -13,6 +14,12 @@ height = 51.496826
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bfd5f"]
 radius = 24.997532
 height = 76.07675
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ymfra"]
+shader = ExtResource("4_4wxc6")
+shader_parameter/brightness = 1.0
+shader_parameter/contrast = 1.4530000690175
+shader_parameter/saturation = 1.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ykppn"]
 radius = 15.946791
@@ -61,6 +68,7 @@ rotation = 0.41234022
 shape = SubResource("CapsuleShape2D_bfd5f")
 
 [node name="Body" type="Sprite2D" parent="." unique_id=16565054]
+material = SubResource("ShaderMaterial_ymfra")
 position = Vector2(-3, -15)
 scale = Vector2(0.099999994, 0.099999994)
 texture = ExtResource("3_4wxc6")
