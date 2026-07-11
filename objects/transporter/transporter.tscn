@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://bnn24jha118hl" path="res://assets/sprites/transporters/foot.png" id="10_dktfd"]
 [ext_resource type="Texture2D" uid="uid://dlg8evg8cb4ff" path="res://assets/sprites/transporters/head.png" id="12_ykppn"]
 [ext_resource type="Shader" uid="uid://dnspan8l0c004" path="res://shaders/contrast.gdshader" id="12_yt206"]
+[ext_resource type="FontFile" uid="uid://40go8r6u5us3" path="res://assets/fonts/ARCO for OSX.otf" id="17_7shq4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_02mon"]
 size = Vector2(20, 85)
@@ -996,6 +997,12 @@ _data = {
 radius = 28.0
 height = 92.0
 
+[sub_resource type="LabelSettings" id="LabelSettings_02mon"]
+font = ExtResource("17_7shq4")
+font_size = 32
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 1)
+
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=2118748822]
 script = ExtResource("1_4k2mb")
 ragdoll = ExtResource("2_dktfd")
@@ -1108,6 +1115,26 @@ shape = SubResource("CapsuleShape2D_02mon")
 [node name="CarryTimer" type="Timer" parent="." unique_id=1554305546]
 wait_time = 0.7
 one_shot = true
+
+[node name="Control" type="Control" parent="." unique_id=296304459]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -39.0
+offset_top = -112.0
+offset_right = 46.0
+offset_bottom = -72.0
+
+[node name="Label" type="Label" parent="Control" unique_id=514108257]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Name"
+label_settings = SubResource("LabelSettings_02mon")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="body_entered" from="Sprites/CarryArea" to="." method="_on_carry_area_body_entered"]
 [connection signal="body_exited" from="Sprites/CarryArea" to="." method="_on_carry_area_body_exited"]

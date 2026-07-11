@@ -9,6 +9,7 @@ class_name Transporter
 @onready var carry_resting_target: Node2D = $Sprites/CarryRestingPosition
 @onready var carry_timer: Timer =  $CarryTimer
 @onready var physics_bodies: StaticBody2D = $StaticBody2D
+@onready var name_label: Label = $Control/Label
 
 @export var ragdoll: PackedScene
 
@@ -50,6 +51,7 @@ func _attach_ragdoll_to_resting_position() -> void:
 func _ready() -> void:
 	states.init(self)
 	add_collision_exception_with(physics_bodies)
+	name_label.text = Globals.get_random_first_name()
 
 func _process(delta: float) -> void:
 	states.process(delta)
