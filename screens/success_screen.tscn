@@ -1,0 +1,190 @@
+[gd_scene format=3 uid="uid://comogp3ct00ap"]
+
+[ext_resource type="Script" uid="uid://bcc0ffp8frqva" path="res://screens/sucess_screen.gd" id="1_yohv6"]
+[ext_resource type="FontFile" uid="uid://dopt5voho7i1w" path="res://assets/fonts/Yay Holiday.ttf" id="2_bgm63"]
+[ext_resource type="Script" uid="uid://go01hr8vbd16" path="res://hover_button.gd" id="3_vn76y"]
+[ext_resource type="Shader" uid="uid://dnspan8l0c004" path="res://shaders/contrast.gdshader" id="4_pwcrg"]
+[ext_resource type="Texture2D" uid="uid://c2i2q56csalmt" path="res://assets/sprites/backgrounds/logo.png" id="5_ox7ji"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_02mon"]
+font = ExtResource("2_bgm63")
+font_size = 96
+
+[sub_resource type="LabelSettings" id="LabelSettings_i6qrg"]
+font = ExtResource("2_bgm63")
+font_size = 48
+
+[sub_resource type="Theme" id="Theme_6b3uw"]
+default_font = ExtResource("2_bgm63")
+default_font_size = 50
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iaej0"]
+shader = ExtResource("4_pwcrg")
+shader_parameter/brightness = 1.0
+shader_parameter/contrast = 2.0
+shader_parameter/saturation = 1.0
+
+[sub_resource type="Animation" id="Animation_o424p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(763, 329)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VBoxContainer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 140.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_u2ihc"]
+resource_name = "start"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.96666664, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(763, 672), Vector2(763, 329)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VBoxContainer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.6666666, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-815, 140.5), Vector2(0, 140.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.96666664),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iaej0"]
+_data = {
+&"RESET": SubResource("Animation_o424p"),
+&"start": SubResource("Animation_u2ihc")
+}
+
+[node name="FadeOverlay" type="Control" unique_id=24610796]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yohv6")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=502236915]
+layout_mode = 0
+offset_right = 1160.0
+offset_bottom = 658.0
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=463276423]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -183.5
+offset_right = 655.0
+offset_bottom = 183.5
+grow_vertical = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(100, 0)
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=235736990]
+layout_mode = 2
+text = "Mission Complete"
+label_settings = SubResource("LabelSettings_02mon")
+
+[node name="TimeLabel" type="Label" parent="VBoxContainer" unique_id=937264899]
+layout_mode = 2
+text = "Time -> 00:00"
+label_settings = SubResource("LabelSettings_i6qrg")
+
+[node name="BodyCountLabel" type="Label" parent="VBoxContainer" unique_id=1940117854]
+layout_mode = 2
+text = "Body count -> 00"
+label_settings = SubResource("LabelSettings_i6qrg")
+
+[node name="Label4" type="Label" parent="VBoxContainer" unique_id=803508523]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_i6qrg")
+
+[node name="ContinueButton" type="Button" parent="VBoxContainer" unique_id=1009308717]
+layout_mode = 2
+theme = SubResource("Theme_6b3uw")
+text = "Continue"
+flat = true
+alignment = 0
+script = ExtResource("3_vn76y")
+default_font_size = 50
+hover_font_size = 60
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1459149403]
+material = SubResource("ShaderMaterial_iaej0")
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -389.0
+offset_top = -319.0
+offset_right = -8.0
+offset_bottom = 61.999756
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("5_ox7ji")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=937823242]
+libraries/ = SubResource("AnimationLibrary_iaej0")
+autoplay = &"start"
+
+[connection signal="button_up" from="VBoxContainer/ContinueButton" to="." method="_on_continue_button_button_up"]

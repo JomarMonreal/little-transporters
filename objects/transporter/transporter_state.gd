@@ -9,5 +9,6 @@ enum State {
 	Throwing,
 	Jumping,
 	Hurt,
-	Dead
+	Dead,
+	Finished
 }

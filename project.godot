@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Little Transporters"
-run/main_scene="uid://ceng7lc87flnb"
+run/main_scene="uid://ok7olefjpsh"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 

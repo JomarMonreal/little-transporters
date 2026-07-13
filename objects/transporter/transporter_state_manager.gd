@@ -10,6 +10,7 @@ func _ready() -> void:
 		TransporterState.State.Carrying: $Carrying,
 		TransporterState.State.Throwing: $Throwing,
 		TransporterState.State.Dead: $Dead,
+		TransporterState.State.Finished: $Finished,
 	}
 
 	initial_state = TransporterState.State.Idle

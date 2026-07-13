@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://ok7olefjpsh"]
+
+[ext_resource type="Script" uid="uid://o1hd7qpv3lf2" path="res://game_manager/game_manager.gd" id="1_q7vcu"]
+[ext_resource type="Script" uid="uid://ca0abw1nuupsc" path="res://game_manager/game_manager_state_manager.gd" id="2_03pqa"]
+[ext_resource type="PackedScene" uid="uid://b2702bcf5uyhw" path="res://screens/main_menu.tscn" id="2_pnley"]
+[ext_resource type="PackedScene" uid="uid://ceng7lc87flnb" path="res://screens/gameplay.tscn" id="3_03pqa"]
+[ext_resource type="Script" uid="uid://cv28qtjlrju2u" path="res://game_manager/game_manager_main_menu.gd" id="3_2631c"]
+[ext_resource type="Script" uid="uid://cryew36a322ts" path="res://game_manager/game_manager_level.gd" id="5_r63pj"]
+
+[node name="GameManager" type="Node2D" unique_id=535160068]
+script = ExtResource("1_q7vcu")
+
+[node name="StateMachine" type="Node2D" parent="." unique_id=41185298]
+script = ExtResource("2_03pqa")
+
+[node name="Loading" type="Node2D" parent="StateMachine" unique_id=1565656729]
+
+[node name="MainMenu" type="Node2D" parent="StateMachine" unique_id=1938237349]
+script = ExtResource("3_2631c")
+
+[node name="MainMenu" parent="StateMachine/MainMenu" unique_id=308504706 instance=ExtResource("2_pnley")]
+
+[node name="Level" type="Node2D" parent="StateMachine" unique_id=953637867]
+script = ExtResource("5_r63pj")
+
+[node name="Gameplay" parent="StateMachine/Level" unique_id=886058013 instance=ExtResource("3_03pqa")]
+
+[connection signal="played" from="StateMachine/MainMenu/MainMenu" to="." method="_on_main_menu_played"]
+[connection signal="exiting" from="StateMachine/Level/Gameplay" to="." method="_on_gameplay_exiting"]

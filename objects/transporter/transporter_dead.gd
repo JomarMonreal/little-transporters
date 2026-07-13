@@ -6,6 +6,9 @@ func enter() -> void:
 	transporter.collider.visible = false
 	transporter.dead.emit()
 	transporter.sprite_group.queue_free()
+	
+	var gameplay = get_tree().get_first_node_in_group("gameplay") as Gameplay
+	gameplay.transporters_died.append(transporter.name_label.text)
 
 	if not transporter.no_ragdoll_on_death:
 		var instance = transporter.ragdoll.instantiate() as Node2D

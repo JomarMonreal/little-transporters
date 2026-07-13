@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://b2702bcf5uyhw"]
+
+[ext_resource type="Script" uid="uid://c1lxgmok7xxne" path="res://screens/main_menu.gd" id="1_5mnfb"]
+[ext_resource type="Texture2D" uid="uid://duo5lk7msju3h" path="res://assets/sprites/backgrounds/main_menu_2.png" id="1_ocono"]
+[ext_resource type="FontFile" uid="uid://dopt5voho7i1w" path="res://assets/fonts/Yay Holiday.ttf" id="2_p3cyw"]
+[ext_resource type="Texture2D" uid="uid://c2i2q56csalmt" path="res://assets/sprites/backgrounds/logo.png" id="3_t3bh0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_02mon"]
+font = ExtResource("2_p3cyw")
+font_size = 90
+font_color = Color(0.35031372, 0.35031375, 0.35031357, 1)
+
+[sub_resource type="Theme" id="Theme_02mon"]
+default_font = ExtResource("2_p3cyw")
+default_font_size = 40
+
+[node name="MainMenu" type="CanvasLayer" unique_id=308504706]
+script = ExtResource("1_5mnfb")
+
+[node name="Control" type="Control" parent="." unique_id=1510883626]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control" unique_id=1445329370]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ocono")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="Control" unique_id=1942596645]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -11.0
+offset_top = -209.0
+offset_right = 481.0
+offset_bottom = -24.0
+grow_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(50, -50)
+text = "Little
+Transporters"
+label_settings = SubResource("LabelSettings_02mon")
+
+[node name="Button" type="Button" parent="Control" unique_id=96035537]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1058.0
+offset_top = -71.0
+offset_right = -888.0
+offset_bottom = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = SubResource("Theme_02mon")
+theme_override_colors/font_color = Color(0.31555015, 0.3155501, 0.3155501, 1)
+text = "Play"
+flat = true
+alignment = 0
+
+[node name="TextureRect2" type="TextureRect" parent="Control" unique_id=1979304747]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 574.0
+offset_right = 87.0
+offset_bottom = 624.0
+texture = ExtResource("3_t3bh0")
+expand_mode = 1
+
+[connection signal="button_up" from="Control/Button" to="." method="_on_button_button_up"]

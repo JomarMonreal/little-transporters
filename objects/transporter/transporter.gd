@@ -8,7 +8,6 @@ class_name Transporter
 @onready var collider: Node2D = $CollisionShape2D
 @onready var carry_resting_target: Node2D = $Sprites/CarryRestingPosition
 @onready var carry_timer: Timer =  $CarryTimer
-@onready var physics_bodies: StaticBody2D = $StaticBody2D
 @onready var name_label: Label = $Control/Label
 
 @export var ragdoll: PackedScene
@@ -18,7 +17,7 @@ var possible_ragdoll: TransportRagdoll
 var ragdoll_to_carry: TransportRagdoll
 var no_ragdoll_on_death := false
 
-
+signal finished
 signal dead
 
 func get_hurt() -> void:
@@ -50,7 +49,6 @@ func _attach_ragdoll_to_resting_position() -> void:
 
 func _ready() -> void:
 	states.init(self)
-	add_collision_exception_with(physics_bodies)
 	name_label.text = Globals.get_random_first_name()
 
 func _process(delta: float) -> void:
@@ -59,7 +57,9 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	states.physics_process(delta)
 	get_hurt()
-
+	
+	if states.current_state == states.states[TransporterState.State.Finished]:
+		return
 	if Input.is_action_pressed("ui_left") or Input.is_physical_key_pressed(KEY_A):
 		sprite_group.scale.x = -1
 	if Input.is_action_pressed("ui_right") or Input.is_physical_key_pressed(KEY_D):
