@@ -1,5 +1,7 @@
 extends TransporterState
 
+@onready var yippee: AudioStreamPlayer = $Yippee
+
 func enter() -> void:
 	var transporter := entity as Transporter
 	transporter.animation.play("finished")
@@ -8,6 +10,7 @@ func enter() -> void:
 
 	var gameplay = get_tree().get_first_node_in_group("gameplay") as Gameplay
 	gameplay.record_finish_time()
+	yippee.play()
 
 func physics_process(delta: float) -> int:
 	var transporter := entity as Transporter

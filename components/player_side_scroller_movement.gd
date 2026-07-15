@@ -10,6 +10,7 @@ class_name PlayerSideScrollerMovement
 
 @onready var jump_buffer_timer: Timer = $JumpBufferTimer
 @onready var coyete_jump_timer: Timer = $CoyeteJumpTimer
+@onready var jump_audio: AudioStreamPlayer2D = $JumpAudio
 
 func _ready() -> void:
 	jump_buffer_timer.wait_time = jump_buffer_time
@@ -42,6 +43,8 @@ func move(player: CharacterBody2D, delta: float, speed_multiplier: float = 1.0):
 		jump_buffer_timer.stop()
 		coyete_jump_timer.stop()
 		jumped = true
+		if jump_audio.stream:
+			jump_audio.play()
 
 	# Get the input direction and handle the movement/deceleration.
 	var direction := 0.0

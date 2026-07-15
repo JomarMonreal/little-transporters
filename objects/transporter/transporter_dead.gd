@@ -1,9 +1,13 @@
 extends TransporterState
 
+@onready var death_audio: AudioStreamPlayer = $Death
+@onready var death_messages: Node2D = $DeathMessages
+
 func enter() -> void:
 	var transporter := entity as Transporter
 	transporter.velocity = Vector2.ZERO
 	transporter.collider.visible = false
+	transporter.carry_timer.stop()
 	transporter.dead.emit()
 	transporter.sprite_group.queue_free()
 	
@@ -23,7 +27,13 @@ func enter() -> void:
 		else:
 			ragdoll.reparent(transporter.get_parent())
 			ragdoll.set_static(false)
-
+	
+	death_audio.play()
+	await death_audio.finished
+	
+	var death_message = death_messages.get_children().pick_random() as AudioStreamPlayer
+	death_message.play()
+	await death_message.finished
 	transporter.queue_free()
 
 func physics_process(delta: float) -> int:

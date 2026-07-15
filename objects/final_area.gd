@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var animation = $AnimationPlayer
+@onready var audio: AudioStreamPlayer = $Hiphop
 
 signal finished()
 
@@ -20,6 +21,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		animation.play("carrying")
 		body.states.change_state(TransporterState.State.Finished)
 		body.finished.emit()
+		audio.play()
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:

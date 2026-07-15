@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bcyu4add7xowm" path="res://objects/transporter/ragdoll.tscn" id="2_dktfd"]
 [ext_resource type="Script" uid="uid://cp1rq4ab304hn" path="res://components/player_side_scroller_movement.gd" id="2_tkc8e"]
 [ext_resource type="Script" uid="uid://bw0q5qcaic0y4" path="res://objects/transporter/transporter_state_manager.gd" id="3_3cpk4"]
+[ext_resource type="AudioStream" uid="uid://d4cjci3uw2u7y" path="res://assets/music/wie.ogg" id="4_fg1g7"]
 [ext_resource type="Script" uid="uid://dhtoqh04fbw3u" path="res://objects/transporter/transporter_idle.gd" id="4_v6pi3"]
 [ext_resource type="Script" uid="uid://drblg2iwu2j6l" path="res://objects/transporter/transporter_walking.gd" id="6_u8nj3"]
 [ext_resource type="Script" uid="uid://c7bo3mnkpl68f" path="res://objects/transporter/transporter_carrying.gd" id="6_ykppn"]
@@ -11,13 +12,19 @@
 [ext_resource type="Script" uid="uid://5oiux7eub8yu" path="res://objects/transporter/transporter_jumping.gd" id="7_xo4yh"]
 [ext_resource type="Script" uid="uid://be1gyk6si4jgx" path="res://objects/transporter/transporter_hurt.gd" id="8_a6nkc"]
 [ext_resource type="Script" uid="uid://dbp4eytjr3huo" path="res://objects/transporter/transporter_dead.gd" id="8_cxmdo"]
+[ext_resource type="AudioStream" uid="uid://cdl4ay8x1tp3q" path="res://assets/music/footstep06.ogg" id="9_7m8m7"]
 [ext_resource type="Texture2D" uid="uid://4sg6ox8vmplj" path="res://assets/sprites/transporters/hand.png" id="9_bfd5f"]
 [ext_resource type="Texture2D" uid="uid://dr5jylloirxke" path="res://assets/sprites/transporters/body.png" id="9_cxmdo"]
 [ext_resource type="Texture2D" uid="uid://bnn24jha118hl" path="res://assets/sprites/transporters/foot.png" id="10_dktfd"]
 [ext_resource type="Script" uid="uid://dictjmyvfff1u" path="res://objects/transporter/transporter_finished.gd" id="12_si73v"]
 [ext_resource type="Texture2D" uid="uid://dlg8evg8cb4ff" path="res://assets/sprites/transporters/head.png" id="12_ykppn"]
 [ext_resource type="Shader" uid="uid://dnspan8l0c004" path="res://shaders/contrast.gdshader" id="12_yt206"]
+[ext_resource type="AudioStream" uid="uid://b4kf0gygnery8" path="res://assets/music/death.ogg" id="13_cs4x7"]
+[ext_resource type="AudioStream" uid="uid://bs2g0atv0nt5p" path="res://assets/music/doit.ogg" id="14_0fwfq"]
+[ext_resource type="AudioStream" uid="uid://d0gdnydpq7xfl" path="res://assets/music/icantgo.ogg" id="15_fg1g7"]
+[ext_resource type="AudioStream" uid="uid://5gkwcvm18607" path="res://assets/music/iwill.ogg" id="16_es3tv"]
 [ext_resource type="FontFile" uid="uid://dopt5voho7i1w" path="res://assets/fonts/Yay Holiday.ttf" id="17_7shq4"]
+[ext_resource type="AudioStream" uid="uid://vr83cgnyy148" path="res://assets/music/yippee.ogg" id="19_es3tv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_02mon"]
 size = Vector2(20, 85)
@@ -1148,12 +1155,15 @@ ragdoll = ExtResource("2_dktfd")
 
 [node name="PlayerMovement" type="Node2D" parent="." unique_id=1932189029]
 script = ExtResource("2_tkc8e")
-jump_velocity = -1200.0
+jump_velocity = -1300.0
 gravity_factor = 4
 
 [node name="JumpBufferTimer" type="Timer" parent="PlayerMovement" unique_id=924157630]
 
 [node name="CoyeteJumpTimer" type="Timer" parent="PlayerMovement" unique_id=1709967820]
+
+[node name="JumpAudio" type="AudioStreamPlayer2D" parent="PlayerMovement" unique_id=-1168456824]
+stream = ExtResource("4_fg1g7")
 
 [node name="StateManager" type="Node2D" parent="." unique_id=1641965080]
 script = ExtResource("3_3cpk4")
@@ -1171,6 +1181,12 @@ throw_force = Vector2(900, -100)
 [node name="Walking" type="Node2D" parent="StateManager" unique_id=1196406927]
 script = ExtResource("6_u8nj3")
 
+[node name="Footstep" type="AudioStreamPlayer2D" parent="StateManager/Walking" unique_id=1772449595]
+position = Vector2(1, 1)
+stream = ExtResource("9_7m8m7")
+volume_db = -10.0
+pitch_scale = 0.6
+
 [node name="Jumping" type="Node2D" parent="StateManager" unique_id=1468999738]
 script = ExtResource("7_xo4yh")
 
@@ -1180,8 +1196,29 @@ script = ExtResource("8_a6nkc")
 [node name="Dead" type="Node2D" parent="StateManager" unique_id=1820278996]
 script = ExtResource("8_cxmdo")
 
+[node name="Death" type="AudioStreamPlayer" parent="StateManager/Dead" unique_id=1159745860]
+stream = ExtResource("13_cs4x7")
+volume_db = -5.0
+
+[node name="DeathMessages" type="Node2D" parent="StateManager/Dead" unique_id=902406541]
+
+[node name="Doit" type="AudioStreamPlayer" parent="StateManager/Dead/DeathMessages" unique_id=462929023]
+stream = ExtResource("14_0fwfq")
+volume_db = -10.0
+
+[node name="Icantgo" type="AudioStreamPlayer" parent="StateManager/Dead/DeathMessages" unique_id=1767969474]
+stream = ExtResource("15_fg1g7")
+volume_db = -10.0
+
+[node name="Iwill" type="AudioStreamPlayer" parent="StateManager/Dead/DeathMessages" unique_id=1329285234]
+stream = ExtResource("16_es3tv")
+volume_db = -10.0
+
 [node name="Finished" type="Node2D" parent="StateManager" unique_id=627902178]
 script = ExtResource("12_si73v")
+
+[node name="Yippee" type="AudioStreamPlayer" parent="StateManager/Finished" unique_id=966777996]
+stream = ExtResource("19_es3tv")
 
 [node name="Sprites" type="Node2D" parent="." unique_id=458954064]
 

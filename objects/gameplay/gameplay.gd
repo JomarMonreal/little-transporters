@@ -12,6 +12,9 @@ class_name Gameplay
 @onready var ruler: Node2D = $Ruler
 @onready var pause_overlay: ColorRect = $CanvasLayer/Control/Overlay
 @onready var control_ui: Control = $CanvasLayer/Control
+@onready var audio_listener: AudioListener2D = $Camera2D/AudioListener2D
+@onready var pen: Node2D = $Pen
+
 
 var transporters_died: Array[String] = []
 var spawn_position: Vector2 = Vector2.ZERO
@@ -48,6 +51,7 @@ func restart() -> void:
 	for child in transporters_group.get_children():
 		child.queue_free()
 	spawn_transporter()
+	pen.animation.play("default")
 	pause(false)
 
 func record_finish_time() -> void:

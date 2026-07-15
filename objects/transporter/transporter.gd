@@ -60,6 +60,8 @@ func _physics_process(delta: float) -> void:
 	
 	if states.current_state == states.states[TransporterState.State.Finished]:
 		return
+	if states.current_state == states.states[TransporterState.State.Dead]:
+		return
 	if Input.is_action_pressed("ui_left") or Input.is_physical_key_pressed(KEY_A):
 		sprite_group.scale.x = -1
 	if Input.is_action_pressed("ui_right") or Input.is_physical_key_pressed(KEY_D):

@@ -6,9 +6,17 @@
 [ext_resource type="PackedScene" uid="uid://ceng7lc87flnb" path="res://screens/gameplay.tscn" id="3_03pqa"]
 [ext_resource type="Script" uid="uid://cv28qtjlrju2u" path="res://game_manager/game_manager_main_menu.gd" id="3_2631c"]
 [ext_resource type="Script" uid="uid://cryew36a322ts" path="res://game_manager/game_manager_level.gd" id="5_r63pj"]
+[ext_resource type="AudioStream" uid="uid://cy7nvnlo8bal4" path="res://assets/music/chinoris.ogg" id="7_r63pj"]
 
 [node name="GameManager" type="Node2D" unique_id=535160068]
 script = ExtResource("1_q7vcu")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="." unique_id=1256708743]
+
+[node name="Chinoris" type="AudioStreamPlayer2D" parent="." unique_id=1768181706]
+stream = ExtResource("7_r63pj")
+volume_db = 6.906
+autoplay = true
 
 [node name="StateMachine" type="Node2D" parent="." unique_id=41185298]
 script = ExtResource("2_03pqa")

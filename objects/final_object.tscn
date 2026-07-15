@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://doovfqe74ejgd" path="res://assets/sprites/objects/pen.png" id="2_0mhl1"]
 [ext_resource type="Script" uid="uid://dum14ji2e3rhx" path="res://objects/final_area.gd" id="2_eln4r"]
 [ext_resource type="PackedScene" uid="uid://0expnpnaxi30" path="res://objects/transporter/transporter_animated.tscn" id="3_0mhl1"]
+[ext_resource type="AudioStream" uid="uid://bixsvtikhrmvl" path="res://assets/music/hiphop.ogg" id="5_mye7b"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2ltjs"]
 shader = ExtResource("1_h185w")
@@ -1257,7 +1258,7 @@ tracks/8/path = NodePath("CharacterBody2D2/Sprites/AnimationPlayer:current_anima
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(-0.06666668, 4),
+"times": PackedFloat32Array(0.033333335, 4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [&"walk", &"carry"]
@@ -1269,7 +1270,7 @@ tracks/9/path = NodePath("CharacterBody2D3/Sprites/AnimationPlayer:current_anima
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(-0.033333335, 4),
+"times": PackedFloat32Array(0.033333335, 4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [&"walk", &"carry"]
@@ -1281,7 +1282,7 @@ tracks/10/path = NodePath("CharacterBody2D/Sprites/AnimationPlayer:current_anima
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(-0.033333335, 4),
+"times": PackedFloat32Array(0.033333335, 4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [&"walk", &"carry"]
@@ -1293,7 +1294,7 @@ tracks/11/path = NodePath("CharacterBody2D4/Sprites/AnimationPlayer:current_anim
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(-0.033333335, 4),
+"times": PackedFloat32Array(0.033333335, 4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [&"walk", &"carry"]
@@ -1528,6 +1529,10 @@ autoplay = &"walk"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=749460407]
 libraries/ = SubResource("AnimationLibrary_m6o84")
+speed_scale = 1.2
+
+[node name="Hiphop" type="AudioStreamPlayer" parent="." unique_id=2145927562]
+stream = ExtResource("5_mye7b")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

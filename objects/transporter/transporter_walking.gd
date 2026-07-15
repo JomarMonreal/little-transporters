@@ -3,6 +3,8 @@ extends TransporterState
 @export var run_multiplier := 3.0
 @export var base_speed_scale = 2.0
 
+@onready var footstep_audio = $Footstep
+
 func enter() -> void:
 	var transporter := entity as Transporter
 	transporter.animation.speed_scale = base_speed_scale
@@ -10,10 +12,12 @@ func enter() -> void:
 		transporter.animation.play("carry_walk")
 	else:
 		transporter.animation.play("walk")
+	footstep_audio.play()
 
 func exit() -> void:
 	var transporter := entity as Transporter
 	transporter.animation.speed_scale = 1.0
+	footstep_audio.stop()
 
 func physics_process(delta: float) -> int:
 	var transporter := entity as Transporter
