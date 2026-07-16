@@ -1,0 +1,58 @@
+audio "res://assets/music/schoolbell.ogg" [volume="-10.0"]
+[background arg="res://assets/sprites/backgrounds/scene3.png" fade="1.0"]
+(school bell rings)
+[wait time="2.0"]
+audio music "res://assets/music/lucky_day.ogg" [volume="0.0"]
+[background arg="res://assets/sprites/backgrounds/scene1.png" fade="1.0" wait="true"]
+ada: Hey Denise!
+ada: The exam’s harder than last time, no?
+[background arg="res://assets/sprites/backgrounds/scene2.png" fade="1.0" wait="true"]
+denise: What?!
+denise: So, it’s harder…
+[background arg="res://assets/sprites/backgrounds/scene1.png" fade="0.0"]
+ada: So you still didn’t study…
+[background arg="res://assets/sprites/backgrounds/scene2.png" fade="0.0"]
+denise: I stayed up the whole night watching my favorite anime this season.
+[background arg="res://assets/sprites/backgrounds/scene1.png" fade="0.0"]
+ada: It’s the “I Woke Up as a YouTube Loading Spinner” right?
+ada: You really like weird isekai titles…
+[background arg="res://assets/sprites/backgrounds/scene2.png" fade="0.0"]
+denise: Just try watching the first episode.
+ada: No thanks!
+[background arg="res://assets/sprites/backgrounds/scene3.png" fade="0.0"]
+ada: By the way, I need to fill up the application form for college scholarship.
+ada: Let’s go to the library.
+denise: Alright...
+denise: Second floor?
+ada: Hmmmm...
+ada: Yeah, let’s go there.
+[wait time="2.0"]
+ada: Wait...
+ada: I think I forgot my ballpen in our classroom.
+[background arg="res://assets/sprites/backgrounds/scene4.png" fade="1.0" wait="true"]
+ada: I'm going back there first!
+denise: Are you sure it’s there?
+ada: Let me check again.
+[background fade="0.9" wait="true"]
+[wait time="3.0"]
+audio music "res://assets/music/happy_sustain.ogg"
+[background arg="res://assets/sprites/backgrounds/scene5.png" fade="1.0" wait="true"]
+chief: CHINORIS!!
+chief: Our client today lost their ballpen in the other classroom.
+chief: However, it seems she forgot that she went there today.
+chief: Your job is to fetch it and bring it back to her own table, so she won’t have a hard time searching for it.
+chief: GOT IT?!!
+audio "res://assets/music/yippee.ogg"
+chinoris: YIPPEEE!!!
+[background arg="res://assets/sprites/backgrounds/scene6.png" fade="1.0" wait="true"]
+alon: Uhm… What are we doing?
+bob: Oh, you’re a newcomer?
+bob: We just need to carry the item back to somewhere it can be found easily.
+bob: Human memories can’t be really trusted, so we help them secretly.
+alon: That’s cool!
+[background arg="res://assets/sprites/backgrounds/scene 7.png" fade="1.0" wait="true"]
+bob: Are you excited?
+alon: YES! Let’s go right now!
+audio "res://assets/music/yippee.ogg"
+bob: ....
+audio music -

@@ -24,6 +24,7 @@ var start_time_msec: int = 0
 var end_time_msec: int = 0
 
 signal exiting
+signal finished
 
 func pause(enabled: bool) -> void:
 	pause_overlay.visible = enabled
@@ -98,7 +99,7 @@ func _on_button_2_button_up() -> void:
 
 
 func _on_fade_overlay_continued() -> void:
-	exiting.emit()
+	finished.emit()
 
 
 func _on_pen_finished() -> void:

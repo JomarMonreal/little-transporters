@@ -3,6 +3,8 @@ extends Node
 const NAMES_PATH = "res://assets/json/first-names.json"
 var first_names: Array = []
 
+var current_cutscene = "chapter1"
+
 func _ready():
 	#	open the file where the JSON is stored
 	var file = FileAccess.open(NAMES_PATH, FileAccess.READ)	

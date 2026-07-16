@@ -1608,7 +1608,7 @@ center_of_mass = Vector2(500, 0)
 [node name="Spawners" type="Node2D" parent="." unique_id=2144781820]
 
 [node name="Spawner" parent="Spawners" unique_id=143273831 instance=ExtResource("19_fosh6")]
-position = Vector2(14788, 334)
+position = Vector2(-344, 1024)
 
 [node name="Spawner2" parent="Spawners" unique_id=136650219 instance=ExtResource("19_fosh6")]
 position = Vector2(6300, 433)

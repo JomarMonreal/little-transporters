@@ -13,6 +13,7 @@ config_version=5
 config/name="Little Transporters"
 run/main_scene="uid://ok7olefjpsh"
 config/features=PackedStringArray("4.7", "GL Compatibility")
+boot_splash/image="uid://df6d2nmi72wss"
 config/icon="res://icon.svg"
 
 [autoload]
@@ -23,9 +24,18 @@ Dialogic="*uid://ds2q0uclmolvu"
 [dialogic]
 
 directories/dch_directory={
+"ada": "res://characters/ada.dch",
+"alon": "res://characters/alon.dch",
+"bob": "res://characters/bob.dch",
+"chief": "res://characters/chief.dch",
+"chinoris": "res://characters/chinoris.dch",
+"denise": "res://characters/denise.dch",
 "unit_test_character": "res://Tests/Resources/unit_test_character.dch"
 }
-directories/dtl_directory={}
+directories/dtl_directory={
+"black": "res://screens/black.dtl",
+"chapter1": "res://timelines/chapter1.dtl"
+}
 layout/style_directory={}
 
 [display]

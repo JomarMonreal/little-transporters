@@ -1,0 +1,21 @@
+[background arg="res://assets/sprites/backgrounds/black.png" fade="0.0"]
+audio music "res://assets/music/bad_day.ogg"
+alon: The ballpen has been returned.
+alon: One ballpen.
+[wait time="2.0"]
+alon: But, how many lives did you sacrificed?
+alon: Do you remember ALL their names?
+[wait time="2.0"]
+alon: You never questioned the objective.
+alon: You only questioned how to finish it.
+[wait time="2.0"]
+alon: The ballpen will be found later.
+alon: BUT THEM...
+audio "res://assets/music/yippee.ogg"
+[wait time="2.0"]
+alon: BUT THEMM.....
+audio "res://assets/music/yippee.ogg"
+[wait time="2.0"]
+alon: BUT THEMMM.....
+[wait time="2.0"]
+audio music -

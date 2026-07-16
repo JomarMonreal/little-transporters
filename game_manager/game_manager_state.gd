@@ -5,6 +5,7 @@ enum State {
 	Null,
 	Loading,
 	MainMenu,
+	Cutscene,
 	Level
 }
 

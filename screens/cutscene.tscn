@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://c0hof4y1t3p"]
+
+[ext_resource type="Script" uid="uid://cwytkwpy3fpic" path="res://screens/cutscene.gd" id="1_1ksmo"]
+[ext_resource type="FontFile" uid="uid://dopt5voho7i1w" path="res://assets/fonts/Yay Holiday.ttf" id="1_6prx0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_02mon"]
+font = ExtResource("1_6prx0")
+font_size = 70
+
+[sub_resource type="LabelSettings" id="LabelSettings_1ksmo"]
+font = ExtResource("1_6prx0")
+font_size = 100
+
+[node name="Cutscene" type="Node2D" unique_id=338037768]
+script = ExtResource("1_1ksmo")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1052052682]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1782055235]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(5.1608413e-06, 5.160842e-06, 5.1608413e-06, 1)
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1103105136]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control" unique_id=2024184119]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -11.5
+offset_right = 0.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer" unique_id=555064158]
+layout_mode = 2
+text = "Little Transporters"
+label_settings = SubResource("LabelSettings_02mon")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/Control/VBoxContainer" unique_id=512788675]
+layout_mode = 2
+text = "Releasing on Steam Soon"
+label_settings = SubResource("LabelSettings_1ksmo")
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="." unique_id=1809390833]
+wait_time = 3.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
