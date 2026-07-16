@@ -73,10 +73,12 @@ func _on_carry_area_body_entered(body: Node2D) -> void:
 		return
 
 	possible_ragdoll = body as TransportRagdoll
+	possible_ragdoll.highlight()
 
 
 func _on_carry_area_body_exited(body: Node2D) -> void:
 	if body == possible_ragdoll:
+		possible_ragdoll.unhighlight()
 		possible_ragdoll = null
 
 

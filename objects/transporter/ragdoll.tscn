@@ -16,6 +16,7 @@ radius = 24.997532
 height = 76.07675
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ymfra"]
+resource_local_to_scene = true
 shader = ExtResource("4_4wxc6")
 shader_parameter/brightness = 1.0
 shader_parameter/contrast = 1.4530000690175
