@@ -31,10 +31,12 @@ func _on_gameplay_exiting() -> void:
 func _on_cutscene_finished() -> void:
 	if Globals.current_cutscene == "black":
 		states.change_state(GameManagerState.State.MainMenu)
-		Globals.current_cutscene == "chapter1"
+		Globals.current_cutscene = "chapter1"
+		audio_listener.make_current()
+		main_music.play()
 	else:
 		states.change_state(GameManagerState.State.Level)
-	main_music.stop()
+		main_music.stop()
 
 
 func _on_gameplay_finished() -> void:

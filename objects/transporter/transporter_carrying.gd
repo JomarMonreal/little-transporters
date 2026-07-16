@@ -3,6 +3,7 @@ extends TransporterState
 func enter() -> void:
 	var transporter := entity as Transporter
 	transporter.animation.play("carry")
+	transporter.possible_ragdoll.unhighlight()
 	transporter.ragdoll_to_carry = transporter.possible_ragdoll
 	transporter.possible_ragdoll = null
 	transporter.ragdoll_to_carry.ignore_collisions_with(transporter)

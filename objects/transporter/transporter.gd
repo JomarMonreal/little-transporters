@@ -16,6 +16,7 @@ var knockback_direction: Vector2 = Vector2.ZERO
 var possible_ragdoll: TransportRagdoll
 var ragdoll_to_carry: TransportRagdoll
 var no_ragdoll_on_death := false
+var ragdolls_in_range: Array[TransportRagdoll] = []
 
 signal finished
 signal dead
@@ -40,6 +41,27 @@ func get_hurt() -> void:
 			states.change_state(TransporterState.State.Hurt)
 			
 
+func _update_nearest_ragdoll() -> void:
+	var nearest: TransportRagdoll = null
+	var nearest_distance := INF
+	for candidate in ragdolls_in_range:
+		if candidate == ragdoll_to_carry:
+			continue
+		var distance := global_position.distance_squared_to(candidate.global_position)
+		if distance < nearest_distance:
+			nearest_distance = distance
+			nearest = candidate
+
+	if nearest == possible_ragdoll:
+		return
+
+	if possible_ragdoll:
+		possible_ragdoll.unhighlight()
+	possible_ragdoll = nearest
+	if possible_ragdoll:
+		possible_ragdoll.highlight()
+
+
 func _attach_ragdoll_to_resting_position() -> void:
 	ragdoll_to_carry.set_static(true)
 	ragdoll_to_carry.reparent(carry_resting_target)
@@ -50,6 +72,10 @@ func _attach_ragdoll_to_resting_position() -> void:
 func _ready() -> void:
 	states.init(self)
 	name_label.text = Globals.get_random_first_name()
+
+func _exit_tree() -> void:
+	if possible_ragdoll:
+		possible_ragdoll.unhighlight()
 
 func _process(delta: float) -> void:
 	states.process(delta)
@@ -67,19 +93,24 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("ui_right") or Input.is_physical_key_pressed(KEY_D):
 		sprite_group.scale.x = 1
 
+	if not ragdolls_in_range.is_empty():
+		_update_nearest_ragdoll()
+
 
 func _on_carry_area_body_entered(body: Node2D) -> void:
 	if body is not TransportRagdoll:
 		return
 
-	possible_ragdoll = body as TransportRagdoll
-	possible_ragdoll.highlight()
+	ragdolls_in_range.append(body as TransportRagdoll)
+	_update_nearest_ragdoll()
 
 
 func _on_carry_area_body_exited(body: Node2D) -> void:
-	if body == possible_ragdoll:
-		possible_ragdoll.unhighlight()
-		possible_ragdoll = null
+	if body is not TransportRagdoll:
+		return
+
+	ragdolls_in_range.erase(body as TransportRagdoll)
+	_update_nearest_ragdoll()
 
 
 func _on_carry_timer_timeout() -> void:
